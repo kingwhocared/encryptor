@@ -1,6 +1,7 @@
 /**
  * Created by stannis on 08/05/17.
  */
+import java.io.File;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -11,9 +12,8 @@ public class MainMenu {
         System.out.println("1).Encryption");
         System.out.println("2).Decryption");
 
-        Scanner reader = new Scanner(System.in);  // Reading from System.in
+        Scanner reader = new Scanner(System.in);
         int n = Integer.parseInt(reader.nextLine());
-
         MainMenuRequest mainMenuRequest;
         if (n==1){
             mainMenuRequest = MainMenuRequest.ENCRIPTION;
@@ -27,6 +27,12 @@ public class MainMenu {
 
         System.out.println("Enter file path:");
         String filepath = reader.nextLine();
+
+        File varTmpDir = new File(filepath);
+        if (!varTmpDir.exists()){
+            throw new RuntimeException("file does not exist");
+        }
+
         return new Tuple<MainMenuRequest, String>(mainMenuRequest, filepath);
     }
 
