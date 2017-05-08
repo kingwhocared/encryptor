@@ -22,8 +22,9 @@
 public class hello_java {
 
     public static void main(String[] args) {
-        // Prints "Hello, World" to the terminal window.
         System.out.println("Hello, World");
+        Tuple<MainMenu.MainMenuRequest, String> user_request = MainMenu.GetUserRequest();
+        System.out.println(user_request);
     }
 
 }
