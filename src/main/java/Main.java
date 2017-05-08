@@ -19,12 +19,20 @@
  *
  ******************************************************************************/
 
-public class hello_java {
+public class Main {
 
     public static void main(String[] args) {
         System.out.println("Hello, World");
-        Tuple<MainMenu.MainMenuRequest, String> user_request = MainMenu.GetUserRequest();
-        System.out.println(user_request);
+        Tuple<View.MainMenuRequest, String> user_request = View.GetUserRequest();
+
+        switch (user_request.x) {
+            case ENCRIPTION:
+                View.Encryption_Result_Output(user_request.y);
+                break;
+            case DECRYPTION:
+                View.Decryption_Result_Output(user_request.y);
+                break;
+        }
     }
 
 }
